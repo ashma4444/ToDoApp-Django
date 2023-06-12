@@ -1,0 +1,34 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+<h5 class="alert alert-info w-25 mx-auto text-center mt-5" role="alert">
+    To Do Lists
+</h5>
+
+<form action="" method="POST" class="m-4 mx-auto mt-5" style="width: 40%;">
+    {% csrf_token %}
+
+    {{form.task}}
+
+    <button type="submit" class="btn btn-info btn-block mt-3">ENTER</button>
+</form>
+
+{% if mytodo %}
+    {% for dolists in mytodo %}
+        <div class="task-container mx-auto shadow p-3 mb-5 bg-white rounded d-flex justify-content-between align-items-center" style="width: 40%; margin-top: 50px !important;">
+            <p style="font-size: 18px;" class="m-0"> <span style="font-size: 12px;">Task {{dolists.id}}:</span> {{ dolists.task }}</p>
+            <div class="icon-container">
+                <a href="{% url 'update' dolists.id %}">
+                    <i class="fa-solid fa-pen-to-square" style="font-size: 18px; color: #28a745;"></i>
+                </a>
+
+                <!-- <a href="/delete/{{dolists.id}}"> -->
+                <a href="{% url 'delete' dolists.id %}">
+                    <i class="fa-solid fa-trash-can" style="margin-left: 35px; font-size: 18px; color: #dc3545;"></i>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

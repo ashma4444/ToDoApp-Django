@@ -1,0 +1,15 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+<h5 class="alert alert-info w-25 mx-auto text-center mt-5" role="alert">
+    Update Your Task {{id}}
+</h5>
+
+<form action="" method="POST" class="m-4 mx-auto mt-5" style="width: 40%;">
+    {% csrf_token %}
+
+    {{form.task}}
+
+    <button type="submit" class="btn btn-info btn-block mt-3">UPDATE</button>
+</form>
+{% endblock %}

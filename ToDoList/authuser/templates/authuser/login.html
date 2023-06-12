@@ -1,0 +1,13 @@
+<h1> This is a login page </h1>
+<a href="{% url 'register' %}"> Go to register</a>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <label for="pass">Password:</label><br>
+    <input type="text" id="password" name="password">
+
+    <button type="submit">Submit</button>
+</form>
